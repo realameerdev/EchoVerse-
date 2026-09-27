@@ -1,0 +1,6 @@
+{
+  "name": "EchoVerse AI",
+  "description": "EchoVerse AI is a premium creative platform powering music plan generation, Quran visual video scripts, and elegant presentation slide outlines.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

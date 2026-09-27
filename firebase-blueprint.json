@@ -1,0 +1,42 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile with plan details for EchoVerse",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "plan": { "type": "string", "enum": ["free", "creator", "studio"] },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "name", "email", "plan", "createdAt"]
+    },
+    "Project": {
+      "title": "Project",
+      "description": "Creative generation project output and settings",
+      "type": "object",
+      "properties": {
+        "projectId": { "type": "string" },
+        "uid": { "type": "string" },
+        "type": { "type": "string", "enum": ["song", "video", "quran", "slides"] },
+        "inputData": { "type": "object" },
+        "aiOutput": { "type": "object" },
+        "fileUrl": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["projectId", "uid", "type", "inputData", "aiOutput", "createdAt"]
+    }
+  },
+  "firestore": {
+    "users/{userId}": {
+      "schema": "User",
+      "description": "EchoVerse User profile collection"
+    },
+    "projects/{projectId}": {
+      "schema": "Project",
+      "description": "EchoVerse Creative projects collection"
+    }
+  }
+}
