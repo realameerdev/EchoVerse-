@@ -1,80 +1,111 @@
 import React from 'react';
-import { Button, Card } from '../components/ui';
+import { Button } from '../components/ui';
 import { EchoVerseLogo } from '../components/EchoVerseLogo';
-import { Sparkles, Zap, Layers, Compass, Heart, Presentation, ArrowRight, Play } from 'lucide-react';
+import { Sparkles, ArrowRight } from 'lucide-react';
 
 export default function LandingPage({ onGetStarted }: any) {
   return (
-    <div className="min-h-screen bg-neutral-950 text-neutral-100 font-sans antialiased selection:bg-emerald-500/30">
-      {/* Navbar */}
-      <nav className="fixed top-0 w-full z-50 bg-neutral-950/70 backdrop-blur-xl border-b border-white/5">
-        <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <EchoVerseLogo className="w-8 h-8 text-emerald-500" />
-            <span className="text-xl font-bold text-white tracking-tight">EchoVerse</span>
-          </div>
-          <div className="hidden md:flex gap-8 text-sm font-medium text-neutral-400">
-            {['Explore', 'Create', 'Templates', 'Features'].map(item => (
-              <a key={item} href="#" className="hover:text-emerald-400 transition-colors">{item}</a>
-            ))}
-          </div>
-          <div className="flex items-center gap-4">
-            <Button variant="outline" className="text-sm px-5 py-2">Log in</Button>
-            <Button variant="primary" className="text-sm px-5 py-2" onClick={onGetStarted}>Get Started</Button>
-          </div>
+    <div className="min-h-screen bg-[#FDFBF7] text-[#1A1A1A] font-serif antialiased">
+      {/* Minimal Navbar */}
+      <nav className="px-6 py-8 flex items-center justify-between max-w-5xl mx-auto">
+        <div className="flex items-center gap-2">
+          <EchoVerseLogo className="w-8 h-8 text-[#C5A059]" />
+          <span className="text-xl font-bold tracking-tight">EchoVerse</span>
+        </div>
+        <div className="flex items-center gap-6 text-sm font-medium text-[#555]">
+          <a href="#" className="hover:text-[#C5A059] transition-colors">Explore</a>
+          <button onClick={onGetStarted} className="text-[#1A1A1A] hover:text-[#C5A059] transition-colors">Get Started</button>
         </div>
       </nav>
 
       {/* Hero */}
-      <section className="relative pt-32 pb-24 px-6 text-center overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-emerald-900/20 via-neutral-950 to-neutral-950 -z-10" />
-        <div className="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 px-4 py-1.5 rounded-full text-xs font-semibold mb-8">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>AI-Powered Creative Platform</span>
+      <section className="pt-24 pb-32 px-6 text-center max-w-4xl mx-auto">
+        <div className="inline-block mb-8 px-4 py-1.5 border border-[#E5E0D7] rounded-full text-xs uppercase tracking-widest text-[#888]">
+            AI-Powered Creative Platform
         </div>
-        <h1 className="text-6xl md:text-8xl font-bold text-white mb-8 tracking-tighter max-w-4xl mx-auto">
-          Create. Reflect. <span className="text-emerald-500">Resonate.</span>
+        <h1 className="text-6xl md:text-7xl font-light mb-10 tracking-tight">
+          Create. Reflect. <span className="italic text-[#C5A059]">Resonate.</span>
         </h1>
-        <p className="text-xl md:text-2xl text-neutral-400 max-w-2xl mx-auto mb-12 leading-relaxed">
-          Turn verses, reminders, and ideas into beautiful audio and visual experiences with EchoVerse.
+        <p className="text-xl md:text-2xl text-[#666] mb-12 leading-relaxed max-w-2xl mx-auto">
+          Turn verses, reminders, and ideas into beautiful audio and visual experiences.
         </p>
-        <div className="flex gap-4 justify-center">
-          <Button onClick={onGetStarted} className="px-8 py-3 text-base flex items-center gap-2">
-            Start Creating <ArrowRight className="w-4 h-4" />
-          </Button>
-          <Button variant="secondary" className="px-8 py-3 text-base">Explore EchoVerse</Button>
-        </div>
+        <Button 
+          onClick={onGetStarted} 
+          className="bg-[#1A1A1A] text-white px-10 py-4 rounded-none hover:bg-[#333] transition-colors flex items-center gap-2 mx-auto"
+        >
+          Begin Your Journey <ArrowRight className="w-4 h-4" />
+        </Button>
       </section>
       
-      {/* Features */}
-      <section className="py-24 px-6 bg-neutral-950">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold text-white text-center mb-16 tracking-tight">Everything you need to create with meaning.</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {/* Capabilities */}
+      <section className="py-24 px-6">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-3xl font-light mb-16 text-center">How EchoVerse Empowers You</h2>
+          <div className="grid md:grid-cols-2 gap-12">
             {[
-              { title: 'AI Creative Studio', icon: Zap, desc: 'Turn ideas and verses into polished creative content.' },
-              { title: 'Islamic Templates', icon: Layers, desc: 'Ready-to-use designs for reminders, verses, and more.' },
-              { title: 'Audio Soundscapes', icon: Compass, desc: 'Atmospheric audio tailored to your vision and mood.' },
-              { title: 'Visual Generator', icon: Heart, desc: 'Create stunning visuals for Quranic verses.' }
-            ].map(feat => (
-              <Card key={feat.title} className="hover:border-emerald-500/30 transition-all duration-300">
-                <feat.icon className="w-10 h-10 text-emerald-500 mb-6" />
-                <h3 className="text-xl font-semibold text-white mb-3">{feat.title}</h3>
-                <p className="text-neutral-400 leading-relaxed text-sm">{feat.desc}</p>
-              </Card>
+              { title: 'Song from Lyrics', desc: 'Transform your lyrics into complete production blueprints with genre, mood, and instrumentation.' },
+              { title: 'Music from Idea', desc: 'Describe a vibe or concept, and receive a tailored music style, BPM, and atmospheric texture.' },
+              { title: 'Quran Video Generator', desc: 'Craft meaningful visual content featuring Quranic verses, complete with translation and suggested imagery.' },
+              { title: 'Presentation Generator', desc: 'Outline impactful presentations with slide-by-slide structures, speaker notes, and visual cues.' }
+            ].map((cap, i) => (
+              <div key={i} className="border-t border-[#E5E0D7] pt-8">
+                <h3 className="text-xl font-medium mb-3">{cap.title}</h3>
+                <p className="text-[#666] leading-relaxed">{cap.desc}</p>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Footer CTA */}
-      <section className="py-24 px-6">
-        <div className="max-w-4xl mx-auto bg-emerald-950/30 border border-emerald-900/50 rounded-3xl p-12 text-center backdrop-blur-md">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Ready to create something beautiful?</h2>
-          <p className="text-neutral-300 mb-10 text-lg">Join EchoVerse today and bring your creative vision to life.</p>
-          <Button onClick={onGetStarted} className="px-10 py-4 text-lg">Get Started Now</Button>
+      {/* Pricing */}
+      <section className="py-24 px-6 bg-[#F5F2EE]">
+        <div className="max-w-5xl mx-auto text-center">
+          <h2 className="text-3xl font-light mb-16">Simple, transparent plans</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              { name: 'Free', price: '$0', features: ['Basic Generative AI', 'Limited Projects'] },
+              { name: 'Creator', price: '$19', features: ['Advanced AI Models', 'Unlimited Projects', 'Priority Support'] },
+              { name: 'Studio', price: '$49', features: ['Enterprise AI Models', 'Collaboration Tools', 'Custom Branding'] }
+            ].map((plan, i) => (
+              <div key={i} className="border border-[#E5E0D7] p-8 bg-white">
+                <h3 className="text-lg font-medium mb-2">{plan.name}</h3>
+                <div className="text-4xl font-light mb-6">{plan.price}<span className="text-sm text-[#888]">/mo</span></div>
+                <ul className="text-sm text-[#666] space-y-3 mb-8">
+                  {plan.features.map((f, j) => <li key={j}>{f}</li>)}
+                </ul>
+                <Button variant="outline" className="w-full">Choose {plan.name}</Button>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
+
+      {/* FAQ */}
+      <section className="py-24 px-6">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-3xl font-light mb-16 text-center">Frequently asked questions</h2>
+          <div className="space-y-8">
+            {[
+              { q: 'Can I use EchoVerse commercially?', a: 'Yes, all projects generated on paid plans can be used for commercial purposes.' },
+              { q: 'What AI models are used?', a: 'We use advanced generative models tailored specifically for creative and Islamic-inspired content.' }
+            ].map((faq, i) => (
+              <div key={i} className="border-b border-[#E5E0D7] pb-8">
+                <h3 className="text-lg font-medium mb-2">{faq.q}</h3>
+                <p className="text-[#666]">{faq.a}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="py-12 px-6 border-t border-[#E5E0D7] text-center text-sm text-[#888]">
+        <div className="flex items-center justify-center gap-2 mb-6">
+          <EchoVerseLogo className="w-6 h-6 text-[#C5A059]" />
+          <span className="font-bold">EchoVerse</span>
+        </div>
+        <p>&copy; 2026 EchoVerse AI. All rights reserved.</p>
+      </footer>
     </div>
   );
 }
