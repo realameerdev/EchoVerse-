@@ -17,6 +17,7 @@ import {
 } from "firebase/firestore";
 import { auth, db, handleFirestoreError, OperationType } from "./firebase";
 import { UserProfile, Project, UserPlan } from "./types";
+import LandingPage from "./pages/LandingPage";
 
 // Dynamic Sub-Modules
 import SongLyricsModule from "./components/SongLyricsModule";
@@ -135,7 +136,11 @@ export default function App() {
       await signInWithPopup(auth, provider);
     } catch (err: any) {
       console.error(err);
-      setErrorText("Google Authentication failed. Please check network restrictions.");
+      if (err.code === 'auth/popup-closed-by-user') {
+        setErrorText("Authentication cancelled. Please try again when ready.");
+      } else {
+        setErrorText("Google Authentication failed. Please check network restrictions.");
+      }
     }
   };
 

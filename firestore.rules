@@ -56,8 +56,8 @@ service cloud.firestore {
 
     // PROJECTS COLLECTION
     match /projects/{projectId} {
+      allow list: if isSignedIn();
       allow get: if isSignedIn() && resource.data.uid == request.auth.uid;
-      allow list: if isSignedIn() && resource.data.uid == request.auth.uid;
       allow create: if isSignedIn() && isValidId(projectId) && isValidProject(request.resource.data);
       allow update: if isSignedIn() && isValidId(projectId) && resource.data.uid == request.auth.uid 
         && isValidProject(request.resource.data)
